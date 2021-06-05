@@ -1,0 +1,53 @@
+.tap {
+  width: 100%;
+}
+
+.tap__domestic {
+  font-size: 1.3rem;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.tap__domestic:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: #da5a2a;
+}
+
+.tap__domestic__text {
+  display: inline-block;
+}
+
+.tap__domestic__text:active {
+  transform: translateY(3px);
+}
+
+.tap__overseas {
+  font-size: 1.3rem;
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+}
+
+.tap__overseas:hover {
+  cursor: pointer;
+  font-weight: bold;
+  color: #da5a2a;
+}
+
+.tap__overseas__text {
+  display: inline-block;
+}
+
+.tap__overseas__text:active {
+  transform: translateY(3px);
+}
+
+.tap__domestic.selected {
+  border-bottom: 2px solid #da5a2a;
+}
+
+.tap__overseas.selected {
+  border-bottom: 2px solid #da5a2a;
+}
