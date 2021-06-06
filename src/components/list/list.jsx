@@ -69,6 +69,8 @@ const List = ({ clickedTap }) => {
 // http 통신 구현
 // const List = ({ chartList }) => {
 
+// useState, loading 활용하여 loading 중일 떈 spinner, 로딩 완료되면 contents 보이도록 처리 -> detail page 에도 적용
+
 //   return (
 //     <>
 //       { chartList &&
