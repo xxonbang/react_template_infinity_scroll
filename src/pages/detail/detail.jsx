@@ -11,26 +11,28 @@ const Detail = () => {
 
   return (
     <div className="pages__detail">
-      <Link to={"/"}>
-        <FontAwesomeIcon icon={ faArrowLeft } />
-      </Link>
-      <div>
-        <div className="detail__header">
-          <div className="detail__title">{detail.title}</div>
-          <div className="detail__singer">{detail.singer}</div>
-        </div>
-        <div className="detail__contents">
-          <div className="detail__lyricist">
-            <span className="detail__lyricist__title">작사</span>
-            <span className="detail__lyricist__contents">{detail.lyricist}</span>
+      <div className="pages__detail__wrapper">
+        <Link to={"/"}>
+          <FontAwesomeIcon icon={ faArrowLeft } />
+        </Link>
+        <div>
+          <div className="detail__header">
+            <div className="detail__title">{detail.title}</div>
+            <div className="detail__singer">{detail.singer}</div>
           </div>
-          <div className="detail__melodizer">
-            <span className="detail__melodizer__title">작곡</span>
-            <span className="detail__melodizer__contents">{detail.melodizer}</span>
-          </div>
-          <div className="detail__genre">
-            <span className="detail__genre__title">장르</span>
-            <span className="detail__genre__contents">{detail.genre}</span>
+          <div className="detail__contents">
+            <div className="detail__lyricist">
+              <span className="detail__lyricist__title">작사</span>
+              <span className="detail__lyricist__contents">{detail.lyricist}</span>
+            </div>
+            <div className="detail__melodizer">
+              <span className="detail__melodizer__title">작곡</span>
+              <span className="detail__melodizer__contents">{detail.melodizer}</span>
+            </div>
+            <div className="detail__genre">
+              <span className="detail__genre__title">장르</span>
+              <span className="detail__genre__contents">{detail.genre}</span>
+            </div>
           </div>
         </div>
       </div>

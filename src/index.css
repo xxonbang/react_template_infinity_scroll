@@ -1,5 +1,6 @@
 * {
   font-family: "Spoqa Han Sans Neo", "sans-serif";
+  box-sizing: border-box;
 }
 
 html {
@@ -8,8 +9,6 @@ html {
 
 body {
   margin: 0;
-  /* font-family: 'Spoqa Han Sans Neo', 'sans-serif';  */
-
   height: 100%;
   top: 0;
   left: 0;
