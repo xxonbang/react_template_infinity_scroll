@@ -13,7 +13,7 @@ const Detail = () => {
     <div className="pages__detail">
       <div className="pages__detail__wrapper">
         <Link to={"/"}>
-          <FontAwesomeIcon icon={ faArrowLeft } />
+          <FontAwesomeIcon icon={ faArrowLeft } className="detail__back__icon" />
         </Link>
         <div>
           <div className="detail__header">

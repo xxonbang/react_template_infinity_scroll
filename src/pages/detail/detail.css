@@ -5,12 +5,17 @@
   flex-direction: column;
 }
 
-.pages__detail > a {
-  font-size: 1.5rem;
+.detail__back__icon {
+  color: #f48fb1;
+  font-size: 1.6rem;
 }
 
-svg {
-  color: #f48fb1;
+.detail__back__icon:hover {
+  transform: scale(1.2);
+}
+
+.detail__back__icon:active {
+  transform: translateY(3px);
 }
 
 .pages__detail__wrapper {
