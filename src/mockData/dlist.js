@@ -13,8 +13,8 @@ const DLIST = {
       title: "Rollin",
       singer: "브레이브걸스",
       imageFile: "rollin.png",
-    },
-  ],
+    }
+  ]
 };
 
 export default DLIST;

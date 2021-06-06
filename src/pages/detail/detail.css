@@ -1,8 +1,8 @@
 .pages__detail {
-  height: 100%;
   width: 25rem;
   display: flex;
   flex-direction: column;
+  margin: auto;
 }
 
 .detail__back__icon {
@@ -19,8 +19,7 @@
 }
 
 .pages__detail__wrapper {
-  width: 25rem;
-  margin: auto;
+  margin: 1.5rem;
 }
 
 .detail__header {

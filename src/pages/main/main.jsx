@@ -14,9 +14,11 @@ const Main = () => {
 
   return (
     <div className="pages__main">
-      <Header />
-      <Tap handleTapClick={handleTapClick} />
-      <List clickedTap={clickedTap}/>
+      <div className="pages__main__wrapper">
+        <Header />
+        <Tap handleTapClick={handleTapClick} />
+        <List clickedTap={clickedTap}/>
+      </div>
     </div>
   );
 };
