@@ -9,12 +9,12 @@ li {
   column-gap: 1rem;
 }
 
-.li__rank,
-.li__imageFile {
+.rank,
+.imageFile {
   place-self: center;
 }
 
-.li__singer {
+.singer {
   align-self: center;
   justify-self: end;
   /* ellipsis */
@@ -44,5 +44,16 @@ li > a:hover {
 }
 
 li > a:active {
+  transform: translateY(3px);
+}
+
+.loadMoreBtn {
+  cursor: pointer;
+  text-align: center;
+  border-radius: 5px;
+  background-color: #51a1f2;
+}
+
+.loadMoreBtn:active {
   transform: translateY(3px);
 }

@@ -1,8 +1,8 @@
-.pages__main {
+.container {
   width: 25rem;
   margin: auto;
 }
 
-.pages__main__wrapper {
+.wrapper {
   margin: 1.5rem;
 }

@@ -1,97 +1,84 @@
-import "./list.css";
-import React from "react";
-import DLIST from "../../mockData/dlist";
-import OLIST from "../../mockData/olist";
+import styles from "./list.module.css";
+import React, { useEffect, useState, useRef, useCallback } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const List = ({ clickedTap }) => {
+const List = ({ selectedTap }) => {
+  const BASE_URL = "http://localhost:3001/";
 
-  //TODO: dummy data, 삭제 예정
-  const domestic = DLIST.chartList;
-  const overseas = OLIST.chartList;
-  
-  // const IMG_BASE_PATH = "../../assets/images/";
+  const [chartList, setChartList] = useState([]);
+  const loadMoreBtn = useRef(null);
 
-  //   function getImagePath(song) {
-  //     const path = IMG_BASE_PATH + song.imageFile;
-  //     return path;
-  //     const img = song.imageFile;
-  // const imgFile = `../../assets/${img}`;
-  // return imgFile;
+  const fetchData = useCallback(async (category) => {
+    try {
+      const { data } = await axios.get(BASE_URL + category);
+      if (!data) return;
+      setChartList((prev) => [...prev, ...data.chartList]);
+      // scrollIntoView
+      scrollIntoLoadMoreBtn();
+    } catch {
+      throw new Error("fetch error : list datas");
+    }
+  }, []);
 
-  //     const image = new Image();
-  //     image.src = "../../assets/" + song.imageFile;
-  //     return image;
-  //   }
+  useEffect(() => {
+    fetchData(selectedTap);
+    // tap 변경을 위한 state 초기화
+    return () => setChartList([]);
+  }, [selectedTap, fetchData]);
+
+  function scrollIntoLoadMoreBtn() {
+    loadMoreBtn.current.scrollIntoView({
+      behavior: "smooth",
+    });
+  }
+
+  function onClick() {
+    fetchData("domestic");
+  }
+
+  function toTheTop() {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }
 
   return (
     <>
-      { clickedTap && clickedTap === 'domestic' &&
-        <ul>
-          {domestic.map((song) => (
-            <li key={song.id}>
-              <span className="li__rank">{song.rank}</span>
-              <img
-                className="li__imageFile"
-                alt="img"
-                src={require("../../assets/images/" + song.imageFile).default}
-              />
-              <Link to={`/detail/${song.id}`}>
-                <span className="li__title">{song.title}</span>
-              </Link>
-              <span className="li__singer">{song.singer}</span>
-            </li>
-          ))}
-        </ul>
-      }
-      { clickedTap && clickedTap === 'overseas' &&
-        <ul>
-          {overseas.map((song) => (
-            <li key={song.id}>
-              <span>{song.rank}</span>
-              <img
-                alt="img"
-                src={require("../../assets/images/" + song.imageFile).default}
-              />
-              <Link to={`/detail/${song.id}`}>
-                <span>{song.title}</span>
-              </Link>
-              <span>{song.singer}</span>
-            </li>
-          ))}
-        </ul>
-      }
+      {chartList && (
+        <>
+          <ul>
+            {chartList.map((song, idx) => (
+              <li key={idx}>
+                <span className={styles.rank}>{song.rank}</span>
+                <img
+                  className={styles.imageFile}
+                  alt="img"
+                  src={require("../../assets/images/" + song.imageFile).default}
+                />
+                <Link to={`/detail/${song.id}`}>
+                  <span>{song.title}</span>
+                </Link>
+                <span className={styles.singer}>{song.singer}</span>
+              </li>
+            ))}
+          </ul>
+          <div
+            ref={loadMoreBtn}
+            className={styles.loadMoreBtn}
+            onClick={onClick}
+          >
+            Load More...
+          </div>
+          <div id="test" onClick={toTheTop}>
+            to the top
+          </div>          
+        </>
+      )}
     </>
   );
 };
-
-
-// http 통신 구현
-// const List = ({ chartList }) => {
-
-// useState, loading 활용하여 loading 중일 떈 spinner, 로딩 완료되면 contents 보이도록 처리 -> detail page 에도 적용
-
-//   return (
-//     <>
-//       { chartList &&
-//         <ul>
-//           {chartList.map((song) => (
-//             <li key={song.id}>
-//               <span>{song.rank}</span>
-//               <img
-//                 alt="img"
-//                 src={require("../../assets/images/" + song.imageFile).default}
-//               />
-//               <Link to={`/detail/${song.id}`}>
-//                 <span>{song.title}</span>
-//               </Link>
-//               <span>{song.singer}</span>
-//             </li>
-//           ))}
-//         </ul>
-//       }
-//     </>
-//   );
-// };
 
 export default List;
